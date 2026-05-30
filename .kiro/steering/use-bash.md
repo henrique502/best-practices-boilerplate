@@ -2,37 +2,41 @@
 inclusion: always
 ---
 
-# Shell Commands: Use Linux Commands (Git Bash)
+# Shell Environment: Git Bash on Windows
 
-The default terminal is Git Bash. Always use Linux/Unix commands directly — never use CMD or PowerShell syntax.
+This workspace uses Git Bash as the default shell. All commands must use Linux/Unix syntax.
 
-## Rules
+## Command Syntax
 
-- Use Linux/Unix commands directly: ls, cat, grep, find, rm, cp, mv, mkdir -p, touch, etc.
-- Do NOT wrap commands in `bash -c "..."`. Run commands directly since the terminal is already bash.
-- Use / as path separator instead of \.
-- Use && to chain commands.
-- Use single quotes for strings containing special characters when possible.
-- Environment variables: use $VAR or ${VAR} syntax, not %VAR%.
-- Do NOT use PowerShell cmdlets (Get-ChildItem, Remove-Item, etc.).
-- Do NOT use CMD commands (dir, del, type, etc.).
-- All commands run natively in Git Bash — no need for any shell wrapper.
+- Use Unix commands directly: `ls`, `cat`, `grep`, `find`, `rm`, `cp`, `mv`, `mkdir -p`, `touch`, `sed`, `awk`
+- Use forward slashes for paths: `src/components/App.tsx`
+- Chain commands with `&&`
+- Use `$VAR` or `${VAR}` for environment variables
+- Prefer single quotes for strings with special characters
 
-## Examples
+## Prohibited Patterns
+
+- **No CMD syntax**: `dir`, `del`, `type`, `copy`, `move`, `cls`, backslash paths
+- **No PowerShell cmdlets**: `Get-ChildItem`, `Remove-Item`, `Set-Location`, `Select-String`
+- **No shell wrappers**: Do not use `bash -c "..."` — commands already execute in bash
+- **No `%VAR%`** environment variable syntax
+
+## Correct Usage
 
 ```bash
-# Good - direct commands
+# File operations
 ls -la src/
-cat package.json
-grep -r "import" src/ --include="*.ts"
-rm -rf build/
+mkdir -p src/utils
+rm -rf dist/
 
-# Bad - unnecessary bash -c wrapper
-bash -c "ls -la src/"
-bash -c "cat package.json"
+# Searching
+grep -r 'import' src/ --include='*.ts'
+find . -name '*.test.ts' -type f
 
-# Bad - CMD/PowerShell syntax
-dir src\
-type package.json
-Get-ChildItem src/
+# Environment variables
+echo $NODE_ENV
+export API_URL="http://localhost:3000"
+
+# Chaining
+npm install && npm run build
 ```
