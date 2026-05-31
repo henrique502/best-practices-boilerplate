@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="Best Practices Boilerplate" width="120" height="120" />
+  <img src="logo.svg" alt="Best Practices Boilerplate" width="120" height="120" />
 </p>
 
 <h1 align="center">⚡ Best Practices Boilerplate</h1>

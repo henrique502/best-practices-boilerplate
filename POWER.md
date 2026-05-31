@@ -1,7 +1,7 @@
 ---
 name: "best-practices-boilerplate"
 displayName: "Henrique502 Kiro Boilerplates"
-icon: "./logo.svg"
+icon: "logo.svg"
 description: "Steering files com boas práticas para TypeScript, React, Git e Segurança"
 version: "1.0.0"
 ---
